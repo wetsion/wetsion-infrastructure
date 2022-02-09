@@ -10,7 +10,7 @@ import org.springframework.data.redis.core.script.DefaultRedisScript;
 import site.wetsion.framework.infrastucture.cache.util.RedisUtil;
 
 /**
- * @author <a href="mailto:weixin@cai-inc.com">霜华</a>
+ * @author 霜华
  * @date 2021/6/30 1:47 PM
  **/
 public class RedisLock {

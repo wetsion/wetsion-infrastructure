@@ -10,7 +10,7 @@ import java.io.*;
 import java.util.List;
 
 /**
- * @author <a href="mailto:weixin@cai-inc.com">霜华</a>
+ * @author 霜华
  * @date 2021/6/30 5:54 PM
  **/
 @Slf4j
@@ -21,15 +21,14 @@ public class SerializeUtil {
     @Deprecated
     public static byte[] javaSerialize(Object object) {
 
-        ObjectOutputStream oos = null;
-        ByteArrayOutputStream baos = null;
+        ObjectOutputStream oos;
+        ByteArrayOutputStream baos;
         try {
             // 序列化
             baos = new ByteArrayOutputStream();
             oos = new ObjectOutputStream(baos);
             oos.writeObject(object);
-            byte[] bytes = baos.toByteArray();
-            return bytes;
+            return baos.toByteArray();
         } catch (Exception e) {
             log.debug("[wetsion-infrastructure][SerializeUtil][javaUnserialize] serialize failed!",e);
         }
@@ -38,7 +37,7 @@ public class SerializeUtil {
 
     @Deprecated
     public static Object javaUnserialize(byte[] bytes) {
-        ByteArrayInputStream bais = null;
+        ByteArrayInputStream bais;
         try {
             // 反序列化
             bais = new ByteArrayInputStream(bytes);
@@ -94,7 +93,7 @@ public class SerializeUtil {
         @SuppressWarnings("unchecked")
         Schema<T> schema = (Schema<T>) RuntimeSchema.getSchema(objList.get(0).getClass());
         LinkedBuffer buffer = LinkedBuffer.allocate(SIZE);
-        byte[] protostuff = null;
+        byte[] protostuff;
         ByteArrayOutputStream bos = null;
         try {
             bos = new ByteArrayOutputStream();
@@ -122,7 +121,7 @@ public class SerializeUtil {
         }
 
         Schema<T> schema = RuntimeSchema.getSchema(targetClass);
-        List<T> result = null;
+        List<T> result;
         try {
             result = ProtostuffIOUtil.parseListFrom(new ByteArrayInputStream(paramArrayOfByte), schema);
         } catch (IOException e) {

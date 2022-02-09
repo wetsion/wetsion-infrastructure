@@ -12,7 +12,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
- * @author <a href="mailto:weixin@cai-inc.com">霜华</a>
+ * @author 霜华
  * @date 2021/6/30 6:02 PM
  **/
 public class RedisJedisPool {

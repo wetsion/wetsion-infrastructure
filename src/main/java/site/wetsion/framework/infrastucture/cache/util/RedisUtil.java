@@ -1,11 +1,5 @@
 package site.wetsion.framework.infrastucture.cache.util;
 
-/**
- * @author <a href="mailto:weixin@cai-inc.com">霜华</a>
- * @date 2021/6/30 5:59 PM
- **/
-import cn.gov.zcy.spring.boot.redis.ms.JedisClientUtil;
-import cn.gov.zcy.spring.boot.redis.util.SerializeUtil;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -14,11 +8,16 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
+
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.data.redis.connection.jedis.JedisConverters;
 import org.springframework.data.redis.core.TimeoutUtils;
 import org.springframework.data.redis.core.script.RedisScript;
 
+/**
+ * @author 霜华
+ * @date 2021/6/30 5:59 PM
+ **/
 public final class RedisUtil {
     private static JedisClientUtil jedisClient;
 
@@ -167,7 +166,7 @@ public final class RedisUtil {
     }
 
     public static <T> T execute(RedisScript<String> script, List<String> keys, String... args) {
-        return jedisClient.eval(script.getScriptAsString(), keys, new ArrayList(Arrays.asList(args)));
+        return (T) jedisClient.eval(script.getScriptAsString(), keys, new ArrayList(Arrays.asList(args)));
     }
 
     private static byte[] rawKey(String key) {
